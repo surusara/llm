@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  backend-python-llm:
+    build: ./backend-python-llm
+    ports:
+      - "8501:8501"
+    environment:
+      - OPENAI_API_KEY=your_openai_key
+
+  backend-python-ml:
+    build: ./backend-python-ml
+    ports:
+      - "8500:8500"
+
+  backend-java:
+    build: ./backend-java
+    ports:
+      - "8080:8080"
+
+  mysql:
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: fx_data
+
+  frontend-react:
+    build: ./frontend-react
+    ports:
+      - "3000:3000"
